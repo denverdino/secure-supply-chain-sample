@@ -1,0 +1,16 @@
+FROM golang:1.18-alpine AS build
+WORKDIR /app
+COPY go.mod ./
+COPY go.sum ./
+RUN GOPROXY=https://mirrors.aliyun.com/goproxy/ go mod download
+COPY *.go ./
+RUN go build -o secure-supply-chain-sample
+RUN ls /app
+
+#knative-dev-registry.cn-hangzhou.cr.aliyuncs.com/distroless/base-debian11
+FROM alpine 
+WORKDIR /
+COPY --from=build /app/secure-supply-chain-sample /secure-supply-chain-sample
+EXPOSE 8080
+# USER nonroot:nonroot
+ENTRYPOINT ["/secure-supply-chain-sample"]

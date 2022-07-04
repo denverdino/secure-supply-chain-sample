@@ -1,0 +1,1 @@
+defaultBaseImage: knative-dev-registry.cn-hangzhou.cr.aliyuncs.com/distroless/static:nonroot
