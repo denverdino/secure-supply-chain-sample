@@ -16,7 +16,6 @@ spec:
     spec:
       containers:
         - name: sample
-          # This is the import path for the Go binary to build and run.
           image: knative-dev-registry.cn-hangzhou.cr.aliyuncs.com/denverdino/secure-supply-chain-sample@sha256:cd1ac13d65aa8983f6c10317a09b994cd66fa46aceb1ba1eaf2cab4ee2038ec3
           ports:
             - containerPort: 8080
